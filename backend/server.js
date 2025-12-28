@@ -7,7 +7,7 @@ import { ENV_VARS } from './config/envVars.js';
 import { connectDB } from './config/db.js';
 import { protectRoute } from './middleware/protectroute.js';
 import cookieParser from 'cookie-parser';
-import path from 'path'
+import path from 'path';
 ;
 const app=express();
 
