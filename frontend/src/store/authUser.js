@@ -2,7 +2,10 @@ import axios from 'axios'
 import toast from 'react-hot-toast';
 import {create} from 'zustand'
 
-export const useAuthStore=create((set)=>({
+
+export const useAuthStore=create(
+   
+    (set)=>({
     user:null,
     isSigningUp:false,
     isCheckingAuth:false,
@@ -73,5 +76,9 @@ export const useAuthStore=create((set)=>({
      }
 
 
-}))
+}
+
+
+    
+    ))
 

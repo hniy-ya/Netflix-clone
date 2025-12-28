@@ -23,7 +23,7 @@ const emailValue=url.searchParams.get("email")
 
 
 
-const {signup}=useAuthStore()
+const {signup,isSigningUp}=useAuthStore()
 
     const handleSignUp=(e=>{
         e.preventDefault();
@@ -57,7 +57,9 @@ const {signup}=useAuthStore()
                     <label htmlFor="password" className="text-sm font-medium text-gray-300 block">Password</label>
                     <input type="password" className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring" placeholder="*******" id="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
                     </div>
-                <button className="w-full bg-red-600 py-2 text-white rounded-md hover:bg-red-700 font-semibold">Signup</button>
+                <button className="w-full bg-red-600 py-2 text-white rounded-md hover:bg-red-700 font-semibold"disabled={isSigningUp}
+						>
+							{isSigningUp ? "Loading..." : "Sign Up"}</button>
 
              
                 </form>
