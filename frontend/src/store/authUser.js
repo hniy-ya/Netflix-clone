@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import toast from 'react-hot-toast';
 import {create} from 'zustand'
+import api from '../lib/axios.js';
 
 
 export const useAuthStore=create(
@@ -14,7 +15,7 @@ export const useAuthStore=create(
     signup:async(credentials)=>{
         set({isSigningUp:true})
         try {
-            const response= await axios.post('/api/v1/auth/signup',credentials);
+            const response= await api.post('/auth/signup',credentials);
             set({user:response.data.user,isSigningUp:false});
             toast.success("Account created successfully")
         } catch (error) {
@@ -29,7 +30,7 @@ export const useAuthStore=create(
     login:async(credentials)=>{
         set({isLogingIn:true})
         try {
-            const response= await axios.post('/api/v1/auth/login',credentials);
+            const response= await api.post('/auth/login',credentials);
             set({user:response.data.user,isLogingIn:false});
             toast.success("Login In successfully")
             
@@ -46,7 +47,7 @@ export const useAuthStore=create(
         set({isLoggingOut:true})
 
         try {
-            const response=await axios.post("/api/v1/auth/logout");
+            const response=await api.post("/auth/logout");
             set({user:response.data.user,isLoggingOut:false});
             toast.success("Logged out successfully")
 
@@ -60,7 +61,7 @@ export const useAuthStore=create(
     authCheck:async ()=>{
         set({ isCheckingAuth:true})
          try {
-             const response =await axios.get("/api/v1/auth/authcheck");
+             const response =await api.get("/auth/authcheck");
              set({isCheckingAuth:false,user:response.data.user});
  
              
